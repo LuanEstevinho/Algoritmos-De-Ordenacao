@@ -25,27 +25,22 @@ public class ordenacao {
     }
 
 
-    public int[] insertionSort(int valor) {
-        int i = 0;
+    public int[] insertionSort() {
+        for (int i = 1; i < tamanho; i++) {
+            int atual = lista[i];
+            int j = i - 1;
 
-        while (i < tamanho && lista[i] != 0) {
-            i++;
-        }
+            while (j >= 0 && lista[j] > atual) {
+                lista[j + 1] = lista[j];
+                j--;
+            }
 
-        if (i >= tamanho) {
-            return lista;
-        }
-
-        lista[i] = valor;
-        int atual = i;
-
-        while (atual > 0 && lista[atual - 1] > lista[atual]) {
-            swap(atual, atual - 1);
-            atual--;
+            lista[j + 1] = atual;
         }
 
         return lista;
     }
+
 
     public int[] quickSort(int inicio, int fim) {
         if (inicio < fim) {
